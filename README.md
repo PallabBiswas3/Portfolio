@@ -147,3 +147,9 @@ The work section now contains ten case studies, led by repository-backed systems
 The research overview separates question, motivation, method, current evidence, and next step. Source-reported CARE figures retain the high false-alarm rate; QLoRA has no claimed accuracy gain; TrustGeoOpt is explicitly a research foundation with an unimplemented proposed optimizer. Existing attribution and multilingual studies remain exploratory.
 
 The repository shelf highlights Graph-RAG, FTIR_Spectra, LDMSeg-ViT, Factor_Alpha, ARC-AGI team coursework, and Edge_AI_System. These are curated descriptions of public documentation and artifacts, not independently reproduced performance results. Private repositories are not used for new public content.
+
+## LinkedIn profile review — 6 November 2026
+
+The public profile at https://www.linkedin.com/in/pallab-biswas-5358b028b/ confirms IIT Kharagpur education dates (2023–2028) and lists MATLAB, MATLAB Onramp, Simulink Onramp, GEOINT Remote Sensing & Imagery Analysis, Summer Analytics 2024, and JBNSTS Junior Scholar. Training entries preserve the profile’s listed issuer and issuance month. JBNSTS is presented separately as recognition.
+
+Most current role titles and descriptions are hidden in the publicly retrievable profile. Existing experience entries retain the previously supplied profile-export details; the new FTIR bullet list summarizes that existing description and links related public notebooks. No additional employment, performance claims, or follower statistics were inferred from hidden profile fields.
