@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/content/site-config";
 import "./globals.css";
 import "./home.css";
+import "./portfolio.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url || "http://localhost:3000"),
