@@ -10,8 +10,13 @@ export const siteConfig = {
   location: "Kharagpur, India",
 };
 
+// Keep the primary navigation focused; all other sections remain in the mobile menu.
 export const navigation = [
-  ["Home", "/#home"], ["Play", "/#play"], ["About", "/#about"], ["Research", "/#research"],
-  ["Projects", "/#projects"], ["Skills", "/#skills"], ["Experience", "/#experience"],
-  ["Achievements", "/#achievements"], ["Contact", "/#contact"],
+  ["Work", "/#projects"], ["About", "/#about"], ["Research", "/#research"],
+  ["Experience", "/#experience"], ["Contact", "/#contact"],
+] as const;
+
+export const mobileNavigation = [
+  ["Home", "/#home"], ...navigation, ["Play", "/#play"],
+  ["Skills", "/#skills"], ["Achievements", "/#achievements"], ["Writing", "/writing"],
 ] as const;
