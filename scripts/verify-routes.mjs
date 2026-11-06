@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 
 const base = process.env.PORTFOLIO_TEST_ORIGIN || "http://127.0.0.1:3000";
-const routes = ["/", "/research", "/writing", "/projects/sovereign-ai", "/projects/name-that-llm", "/projects/ev-dynamic-pricing", "/projects/multilingual-hallucination", "/projects/pbstats", "/projects/tinyml-anomaly-detection"];
+const gameRoutes = new Set(["sovereign-ai", "name-that-llm", "ev-dynamic-pricing", "multilingual-hallucination", "pbstats", "tinyml-anomaly-detection"]);
+const routes = ["/projects/controlplane", "/projects/industrial-diagnostics", "/projects/qlora-sqlbench", "/projects/optimizer-reliability", "/", "/research", "/writing", "/projects/sovereign-ai", "/projects/name-that-llm", "/projects/ev-dynamic-pricing", "/projects/multilingual-hallucination", "/projects/pbstats", "/projects/tinyml-anomaly-detection"];
 const pages = new Map();
 for (const route of routes) {
   const response = await fetch(new URL(route, base));
@@ -10,7 +11,7 @@ for (const route of routes) {
   assert.match(html, /<h1[\s>]/, `${route} has a primary heading`);
   assert.match(html, /<title>[^<]+<\/title>/, `${route} has a title`);
   assert.doesNotMatch(html, /href="(?:#|undefined|null)"/, `${route} has no empty action links`);
-  if (route.startsWith("/projects/")) {
+  if (gameRoutes.has(route.split("/").at(-1))) {
     assert.match(html, /id="playground"/, `${route} has a playable explainer`);
     assert.match(html, /Illustrative learning game/, `${route} labels the learning example`);
   }

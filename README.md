@@ -1,6 +1,6 @@
 # Pallab Biswas — personal portfolio
 
-A complete, dark-first portfolio built with Next.js App Router, React, TypeScript, Tailwind CSS, Motion, and Lucide. Includes six project case studies, a curated public-repository workshop, a research overview, Markdown writing, light/dark themes, project filters, interactive architecture diagrams, and a playable ML game. No backend service or paid infrastructure is required.
+A complete, dark-first portfolio built with Next.js App Router, React, TypeScript, Tailwind CSS, Motion, and Lucide. Includes ten project case studies, a curated public-repository workshop, a research overview, Markdown writing, light/dark themes, project filters, interactive architecture diagrams, and a playable ML game. No backend service or paid infrastructure is required.
 
 ## Run locally
 
@@ -33,7 +33,8 @@ All personal content is separate from the UI in `src/content/`:
 | --- | --- |
 | `site-config.ts` | Name, description, public contact details, résumé, navigation |
 | `projects.ts` | Cards, case studies, technology tags, status, architecture stages, repository and demo links |
-| `research.ts` | Questions, motivations, methodologies, observations, interests |
+| `research.ts` | Questions, methods, evidence, next steps, and repository sources |
+| `github-projects.ts` | ControlPlane, industrial diagnostics, QLoRA-SQLBench, and optimizer research case studies |
 | `skills.ts` | Technical categories and tools |
 | `experience.ts` | Education and authorized experience entries |
 | `open-source.ts` | Curated, source-linked repository summaries |
@@ -138,3 +139,11 @@ src/lib/writing.ts       Draft-aware Markdown loading and reading metadata
 ```
 
 The project is intentionally local and Vercel-ready. No public hosting or external publication is performed by creating these files.
+
+## Work and research content review — 6 November 2026
+
+The work section now contains ten case studies, led by repository-backed systems. Four added studies link to their public source documentation: ControlPlane, Time-Series-Diagnostic-Agent, LoRA-SQL, and Adam_Research/trustgeoopt. New studies use conceptual workflow illustrations; the original six retain their interactive games. The case-study template only offers a game link when one exists.
+
+The research overview separates question, motivation, method, current evidence, and next step. Source-reported CARE figures retain the high false-alarm rate; QLoRA has no claimed accuracy gain; TrustGeoOpt is explicitly a research foundation with an unimplemented proposed optimizer. Existing attribution and multilingual studies remain exploratory.
+
+The repository shelf highlights Graph-RAG, FTIR_Spectra, LDMSeg-ViT, Factor_Alpha, ARC-AGI team coursework, and Edge_AI_System. These are curated descriptions of public documentation and artifacts, not independently reproduced performance results. Private repositories are not used for new public content.

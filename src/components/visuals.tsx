@@ -17,7 +17,17 @@ export function NeuralVisual({ compact = false }: { compact?: boolean }) {
   </svg>;
 }
 
-export function ProjectVisual({ kind }: { kind: "sovereign" | "attribution" | "pricing" | "language" | "signal" | "chip" }) {
+export function ProjectVisual({ kind }: { kind: "sovereign" | "attribution" | "pricing" | "language" | "signal" | "chip" | "policy" | "sql" | "diagnostics" | "optimization" }) {
+  const workflows = {
+    policy: { label: "POLICY-DRIVEN RELEASE", steps: ["Inspect", "Verify", "Decide", "Audit"], detail: "Evidence depth ≠ release authority" },
+    sql: { label: "EXECUTION-GROUNDED EVALUATION", steps: ["Schema", "QLoRA", "Query", "Execute"], detail: "Held-out databases · read-only execution" },
+    diagnostics: { label: "INDUSTRIAL DIAGNOSTICS", steps: ["Signal", "Analyze", "Assess", "Trace"], detail: "Six domains · one typed result contract" },
+    optimization: { label: "OPTIMIZER RESEARCH FOUNDATION", steps: ["Control", "Compare", "Observe", "Repeat"], detail: "Reference baselines · causal diagnostics" },
+  };
+  if (kind in workflows) {
+    const workflow = workflows[kind as keyof typeof workflows];
+    return <div className="workflow-visual" aria-label={`Conceptual workflow: ${workflow.label}`}><span className="eyebrow">{workflow.label}</span><ol>{workflow.steps.map((step, i) => <li key={step}><span>0{i + 1}</span>{step}</li>)}</ol><p>{workflow.detail}</p><small>CONCEPTUAL WORKFLOW</small></div>;
+  }
   if (kind === "signal") return <div className="mini-visual signal-visual" aria-label="Illustrative signal processing workflow"><div className="visual-caption">PBSTATS / SIGNAL → SPECTRUM <span>ILLUSTRATION</span></div><svg viewBox="0 0 400 100" fill="none" aria-hidden="true"><path d={Array.from({length:160},(_,i)=>`${i===0?"M":"L"}${i*2.5} ${(50+Math.sin(i*.28)*21+Math.sin(i*.86)*8).toFixed(2)}`).join(" ")} stroke="var(--accent)" strokeWidth="1.5" /><path d="M0 50H400" stroke="var(--line)" strokeDasharray="3 4" /></svg><span className="signal-code">.remove_dc().standardize().fft()</span></div>;
   if (kind === "chip") return <div className="mini-visual chip-visual" aria-label="Illustrative embedded autoencoder architecture"><span className="eyebrow">ESP32 / PURE C++ INFERENCE</span><div className="chip-network">{[4,8,2,8,4].map((n,i)=><div key={i}><span>{Array.from({length:n},(_,j)=><i key={j} />)}</span><small>{n}</small></div>)}</div><span className="signal-code">ENCODE → RECONSTRUCT → DETECT</span></div>;
   if (kind === "sovereign") return <div className="project-visual sovereign-visual" aria-label="Illustrative retrieval and evidence architecture"><div className="visual-caption">SYSTEM ARCHITECTURE <span>ILLUSTRATION</span></div><div className="system-path"><div className="system-source"><span>01</span>Knowledge<br />& evidence</div><i /><div className="system-core"><span className="core-ring">S</span><small>LOCAL INTELLIGENCE</small></div><i /><div className="system-source"><span>02</span>Grounded<br />response</div></div><div className="visual-bottom"><span><i /> PRIVATE BY DESIGN</span><span>RETRIEVE · REASON · VERIFY</span></div></div>;

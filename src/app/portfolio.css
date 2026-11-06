@@ -145,3 +145,37 @@
   .portfolio-home .community-list small { grid-column:1; grid-row:auto; }
   .portfolio-home .achievements-section { padding-top:0; }
 }
+
+/* Repository-backed work and research evidence. */
+.workflow-visual { padding:24px; min-height:210px; border-bottom:1px solid var(--line); background:var(--surface-2); }
+.workflow-visual>.eyebrow { font-size:10px; letter-spacing:.8px; }
+.workflow-visual ol { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; padding:0; margin:24px 0 18px; list-style:none; }
+.workflow-visual li { border-top:2px solid var(--accent); padding-top:12px; font-size:13px; }
+.workflow-visual li>span { display:block; font:10px var(--font-geist-mono); color:var(--faint); margin-bottom:6px; }
+.workflow-visual p { font-size:12px; color:var(--muted); }
+.workflow-visual small { display:block; margin-top:12px; font:9px var(--font-geist-mono); color:var(--faint); }
+.portfolio-home .repository-grid>article { border-bottom:1px solid var(--line); }
+.portfolio-home .repository-grid>article:nth-child(3n) { border-right:0; }
+.portfolio-home .repository-grid>article:nth-last-child(-n+3) { border-bottom:0; }
+.research-principles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; margin-top:40px; padding-block:28px; border-block:1px solid var(--line); }
+.research-principles h2 { font-size:19px; margin:14px 0 10px; }
+.research-principles p { font-size:14px; color:var(--muted); }
+.research-page .index-header>p { font-size:16px; max-width:740px; }
+.research-page .research-detail-grid p { font-size:15px; }
+.research-evidence { padding:20px 24px; margin:24px 0; border-left:2px solid var(--accent); background:var(--surface-2); }
+.research-evidence h3 { font-size:14px; margin-bottom:9px; }
+.research-evidence p { font-size:15px; color:var(--muted); line-height:1.8; }
+.research-evidence p+h3 { margin-top:20px; }
+.research-source-links { display:flex; gap:16px 28px; flex-wrap:wrap; }
+.research-source-links a { min-height:44px; }
+@media(max-width:900px) {
+  .portfolio-home .repository-grid>article:nth-last-child(-n+3) { border-bottom:1px solid var(--line); }
+  .portfolio-home .repository-grid>article:last-child { border-bottom:0; }
+  .research-principles { grid-template-columns:1fr; gap:24px; }
+}
+@media(max-width:600px) {
+  .workflow-visual { padding:20px; }
+  .workflow-visual li { font-size:12px; }
+  .research-evidence { padding:18px; }
+  .research-page .research-detail-top { gap:12px; }
+}

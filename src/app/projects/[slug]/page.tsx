@@ -10,6 +10,7 @@ import { ProjectVisual } from "@/components/visuals";
 import { Tags } from "@/components/ui";
 import { ReadingProgress } from "@/components/project/reading-progress";
 import { TechnicalMarkdown } from "@/components/technical-markdown";
+import { experimentInfo } from "@/lib/case-experiments";
 import { CasePlayground } from "@/components/project/case-playground";
 
 export const dynamicParams = false;
@@ -24,6 +25,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const project = projects.find(p => p.slug === slug);
   if (!project) notFound();
+  const hasPlayground = Object.hasOwn(experimentInfo, slug);
   const next = projects[(projects.indexOf(project) + 1) % projects.length];
   return <main id="main" className="case-study container">
     <ReadingProgress />
@@ -33,7 +35,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <h1>{project.name}<span>.</span></h1>
       <h2>{project.title}</h2><p>{project.summary}</p>
       <div className="case-meta"><Tags items={project.tags} /><span className="status ongoing"><i />{project.status}</span></div>
-      <a href="#playground" className="button primary case-play-link">Play the idea <ArrowRight size={16} /></a>
+      {hasPlayground && <a href="#playground" className="button primary case-play-link">Play the idea <ArrowRight size={16} /></a>}
       <div className="case-external">
         {project.repo && <a href={project.repo}>Repository <ArrowUpRight size={16} /></a>}
         {project.demo && <a href={project.demo}>Live demo <ArrowUpRight size={16} /></a>}
@@ -42,7 +44,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
     </header>
     <div className="case-visual"><ProjectVisual kind={project.visual} /></div>
     <div className="case-body">
-      <aside className="case-toc"><span className="eyebrow">IN THIS CASE STUDY</span><a href="#playground">Play the idea</a><a href="#architecture">Architecture</a>{project.sections.map((section, i) => <a key={section.title} href={`#section-${i}`}>{section.title}</a>)}</aside>
+      <aside className="case-toc"><span className="eyebrow">IN THIS CASE STUDY</span>{hasPlayground && <a href="#playground">Play the idea</a>}<a href="#architecture">Architecture</a>{project.sections.map((section, i) => <a key={section.title} href={`#section-${i}`}>{section.title}</a>)}</aside>
       <div className="case-content">
         <div className="content-note"><Info size={18} /><p>{project.note}</p></div>
         <CasePlayground key={project.slug} slug={project.slug} />

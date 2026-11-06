@@ -1,3 +1,4 @@
+import { githubProjects } from "./github-projects";
 import { additionalProjects } from "./additional-projects";
 
 export type StudySection = {
@@ -8,7 +9,7 @@ export type StudySection = {
 };
 export type Project = {
   slug: string; name: string; title: string; category: string; filter: "AI systems" | "Research" | "Engineering";
-  summary: string; status: string; tags: string[]; number: string; visual: "sovereign" | "attribution" | "pricing" | "language" | "signal" | "chip";
+  summary: string; status: string; tags: string[]; number: string; visual: "sovereign" | "attribution" | "pricing" | "language" | "signal" | "chip" | "policy" | "sql" | "diagnostics" | "optimization";
   repo?: string; demo?: string; documentation?: string; featured?: boolean;
   pipeline: { label: string; description: string }[];
   sections: StudySection[]; note: string;
@@ -20,7 +21,7 @@ export function getProjectCards(): ProjectCardData[] {
   return projects.map(({ slug, name, category, filter, summary, status, tags, number, visual, featured, repo }) => ({ slug, name, category, filter, summary, status, tags, number, visual, featured, repo }));
 }
 
-export const projects: Project[] = [
+const originalProjects: Project[] = [
   {
     slug: "sovereign-ai", name: "SovereignAI", title: "Private, evidence-grounded industrial intelligence.",
     category: "TRUSTWORTHY AI · LLM SYSTEMS", filter: "AI systems", number: "01", visual: "sovereign", featured: true,
@@ -114,3 +115,9 @@ export const projects: Project[] = [
   },
   ...additionalProjects,
 ];
+
+// Lead with repository-backed systems; retain exploratory studies as research.
+const projectOrder = ["sovereign-ai", "controlplane", "industrial-diagnostics", "qlora-sqlbench", "ev-dynamic-pricing", "optimizer-reliability", "pbstats", "tinyml-anomaly-detection", "name-that-llm", "multilingual-hallucination"];
+export const projects: Project[] = [...originalProjects, ...githubProjects]
+  .sort((a, b) => projectOrder.indexOf(a.slug) - projectOrder.indexOf(b.slug))
+  .map((project, index) => ({ ...project, number: String(index + 1).padStart(2, "0") }));

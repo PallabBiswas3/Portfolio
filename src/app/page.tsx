@@ -29,7 +29,7 @@ export default function Home() {
           <h1>From research<br />to reliable<br /><span className="accent">AI systems.</span></h1>
           <p className="hero-description">I’m a Dual Degree student at <strong>IIT Kharagpur</strong>, working across language models, signal processing, and applied machine learning. I turn research questions into experiments, tools, and usable systems.</p>
           <div className="hero-buttons"><Link href="#projects" className="button primary">View selected work <ArrowUpRight size={17} /></Link>{siteConfig.resume ? <a href={siteConfig.resume} className="button" download>Download résumé <ArrowDown size={16} /></a> : <Link className="button secondary" href="#contact">Let’s connect <ArrowRight size={16} /></Link>}<a href={siteConfig.github} className="icon-button" aria-label="GitHub profile"><Github size={20} /></a></div>
-          <div className="hero-now"><span className="eyebrow">ON MY DESK</span><p>Agentic RL · Text-to-SQL fine-tuning<br />Evidence-grounded industrial AI</p><a href={siteConfig.linkedin}>Incoming GenAI Research Intern · Pocket FM <ArrowUpRight size={12} /></a></div>
+          <div className="hero-now"><span className="eyebrow">ON MY DESK</span><p>Optimizer reliability · Text-to-SQL<br />Evidence-grounded industrial AI</p><a href={siteConfig.linkedin}>Incoming GenAI Research Intern · Pocket FM <ArrowUpRight size={12} /></a></div>
         </Reveal>
         <div id="play" className="hero-play"><p className="play-invitation"><span className="eyebrow">A SMALL EXPERIMENT</span>Get a feel for how I think. Try training a classifier.</p><ClassifierGame /></div>
       </div>
@@ -42,9 +42,9 @@ export default function Home() {
     </section>
 
     <section id="projects" className="section container"><Reveal>
-      <SectionHeading number="01" label="SELECTED WORK" title="Research you can explore. Systems you can use."><p>From research questions to Python packages, embedded models, and deployed systems.</p></SectionHeading>
+      <SectionHeading number="01" label="SELECTED WORK" title="Research you can explore. Systems you can use."><p>Local AI systems, factual verification, efficient LLM adaptation, and signal-processing tools — with source code and implementation details.</p></SectionHeading>
       <ProjectGrid projects={getProjectCards()} />
-      <div className="repository-shelf"><div className="repository-heading"><span className="eyebrow">ALSO IN THE WORKSHOP</span><TextLink href={siteConfig.github}>All public repositories</TextLink></div><div className="repository-grid">{repositoryNotes.map(repo => <article key={repo.name}><span className="eyebrow">{repo.category}</span><h3><a href={repo.url}>{repo.name}<ArrowUpRight size={17} /></a></h3><p>{repo.description}</p><Tags items={repo.tags} /></article>)}</div></div>
+      <div className="repository-shelf"><div className="repository-heading"><span className="eyebrow">MORE FROM MY GITHUB</span><TextLink href={siteConfig.github}>All public repositories</TextLink></div><div className="repository-grid">{repositoryNotes.map(repo => <article key={repo.name}><span className="eyebrow">{repo.category}</span><h3><a href={repo.url}>{repo.name}<ArrowUpRight size={17} /></a></h3><p>{repo.description}</p><Tags items={repo.tags} /></article>)}</div></div>
     </Reveal></section>
 
     <section id="about" className="section container"><Reveal>
@@ -53,9 +53,9 @@ export default function Home() {
     </Reveal></section>
 
     <section id="research" className="section research-section"><div className="container"><Reveal>
-      <SectionHeading number="03" label="QUESTIONS WORTH ASKING" title="Research, with a healthy dose of doubt."><p>Understanding what models learn, where they fail, and how to evaluate them.</p></SectionHeading>
+      <SectionHeading number="03" label="QUESTIONS WORTH ASKING" title="Questions, methods, and the evidence so far."><p>From gradient reliability to industrial false alarms: what I’m investigating, how I test it, and what remains open.</p></SectionHeading>
       <div className="research-list">{research.map((item, i) => <Link className="research-row" href={`/projects/${item.slug}`} key={item.slug}><span className="research-index">R.0{i + 1}</span><div><div className="eyebrow">{item.topic}</div><h3>{item.title}</h3><p>{item.question}</p></div><div className="research-row-end"><span className="status ongoing"><i />{item.status}</span><ArrowUpRight size={23} /></div></Link>)}</div>
-      <div className="research-footer"><div className="interest-list">{researchInterests.slice(0, 4).map(item => <span key={item}>{item}</span>)}</div><TextLink href="/research">Research overview</TextLink></div>
+      <div className="research-footer"><div className="interest-list">{researchInterests.slice(0, 4).map(item => <span key={item}>{item}</span>)}</div><TextLink href="/research">All research directions</TextLink></div>
     </Reveal></div></section>
 
     <section id="skills" className="section skills-section"><div className="container"><Reveal>
