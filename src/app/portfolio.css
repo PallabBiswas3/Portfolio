@@ -236,3 +236,40 @@
   .research-page .research-detail-grid { gap:14px; }
   .research-page .research-evidence { padding:12px 14px; }
 }
+
+
+/* Motion enhances visible content; it never gates access to it. */
+@media (prefers-reduced-motion:no-preference) {
+  @keyframes portfolio-enter {
+    from { opacity:.55; translate:0 12px; }
+    to { opacity:1; translate:0 0; }
+  }
+  @keyframes portfolio-menu-enter {
+    from { opacity:.6; translate:0 -6px; }
+    to { opacity:1; translate:0 0; }
+  }
+  .hero-copy>* { animation:portfolio-enter .55s cubic-bezier(.2,.7,.3,1) both; }
+  .hero-copy>:nth-child(2) { animation-delay:60ms; }
+  .hero-copy>:nth-child(3) { animation-delay:120ms; }
+  .hero-copy>:nth-child(4) { animation-delay:180ms; }
+  .hero-copy>:nth-child(5) { animation-delay:240ms; }
+  .hero-play { animation:portfolio-enter .65s ease-out 120ms both; }
+  .portfolio-home .project-card { animation:portfolio-enter .4s ease-out var(--card-delay,0ms) both; }
+  .mobile-nav.is-open { animation:portfolio-menu-enter .2s ease-out both; }
+  .desktop-nav a { position:relative; }
+  .desktop-nav a::after { content:""; position:absolute; left:0; right:0; bottom:5px; height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform .2s ease; }
+  .desktop-nav a:is(:hover,:focus-visible)::after { transform:scaleX(1); }
+  .button svg, .research-row-end>svg, .work-strip strong>svg { transition:transform .2s ease; }
+  .button:is(:hover,:focus-visible) svg { transform:translateX(3px); }
+  .research-row:is(:hover,:focus-visible) .research-row-end>svg,
+  .work-strip>a:is(:hover,:focus-visible) strong>svg { transform:translate(2px,-2px); }
+  .credential-card, .repository-grid>article, .research-detail { transition:border-color .2s ease, box-shadow .2s ease; }
+  .credential-card:hover, .repository-grid>article:hover, .research-detail:focus-within { border-color:var(--accent); box-shadow:0 5px 18px #0000000c; }
+  @supports (animation-timeline:view()) {
+    .research-page .research-detail, .credential-card {
+      animation:portfolio-enter linear both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 35%;
+    }
+  }
+}
